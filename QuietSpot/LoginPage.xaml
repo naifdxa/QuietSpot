@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="12" MaximumWidthRequest="420" VerticalOptions="Center">
+
+            <Image Source="quietspot_logo.png" WidthRequest="90" HeightRequest="90" HorizontalOptions="Center" />
+            <Label Text="QuietSpot" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label Text="Login to find, add and review study spots" TextColor="Gray" HorizontalOptions="Center" />
+
+            <Label Text="Username" FontAttributes="Bold" Margin="0,15,0,0" />
+            <Entry x:Name="usernameEntry" Placeholder="Enter your username" />
+
+            <Label Text="Password" FontAttributes="Bold" />
+            <Entry x:Name="passwordEntry" Placeholder="Enter your password" IsPassword="True" Completed="OnLoginClicked" />
+
+            <HorizontalStackLayout Spacing="5">
+                <CheckBox x:Name="showPasswordCheck" Color="#009B6B" CheckedChanged="OnShowPasswordChanged" />
+                <Label Text="Show password" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <Label x:Name="errorLabel" TextColor="Red" IsVisible="False" />
+
+            <Button Text="Login" BackgroundColor="#009B6B" TextColor="White" Clicked="OnLoginClicked" />
+
+            <Label Text="Don't have an account?" TextColor="Gray" HorizontalOptions="Center" Margin="0,15,0,0" />
+            <Button Text="Create a new account" BackgroundColor="Transparent" TextColor="#009B6B"
+                    BorderColor="#009B6B" BorderWidth="2" Clicked="OnRegisterClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

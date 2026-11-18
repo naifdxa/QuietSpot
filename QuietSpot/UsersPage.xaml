@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.UsersPage"
+             Title="Users">
+
+    <Grid Padding="15" RowSpacing="10" RowDefinitions="Auto,Auto,Auto,*">
+
+        <Label Grid.Row="0" Text="Users" FontSize="26" FontAttributes="Bold" TextColor="#009B6B" />
+        <Label Grid.Row="1" x:Name="notAdminLabel" Text="This page is only for the admin." TextColor="Gray" IsVisible="False" />
+
+        <Grid Grid.Row="2" x:Name="summaryGrid" ColumnDefinitions="*,*,*" ColumnSpacing="10">
+            <Border Grid.Column="0" Padding="12" BackgroundColor="#E6F5EF" StrokeThickness="0" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout>
+                    <Label x:Name="totalLabel" Text="0" FontSize="26" FontAttributes="Bold" />
+                    <Label Text="All Users" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Grid.Column="1" Padding="12" BackgroundColor="#E6F5EF" StrokeThickness="0" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout>
+                    <Label x:Name="adminsLabel" Text="0" FontSize="26" FontAttributes="Bold" />
+                    <Label Text="Admins" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Grid.Column="2" Padding="12" BackgroundColor="#E6F5EF" StrokeThickness="0" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout>
+                    <Label x:Name="studentsLabel" Text="0" FontSize="26" FontAttributes="Bold" />
+                    <Label Text="Students" />
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+        <CollectionView Grid.Row="3" x:Name="usersList">
+            <CollectionView.EmptyView>
+                <Label Text="No users yet." TextColor="Gray" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="12" Margin="0,5" Stroke="#009B6B" StrokeThickness="1" StrokeShape="RoundRectangle 10">
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="{Binding FullName}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding Username, StringFormat='Username: {0}'}" />
+                            <Label Text="{Binding RoleText}" TextColor="#009B6B" FontAttributes="Bold" />
+                            <HorizontalStackLayout Spacing="10" Margin="0,5,0,0">
+                                <Button Text="{Binding RoleButtonText}" BackgroundColor="#009B6B" TextColor="White"
+                                        WidthRequest="150" Clicked="OnChangeRoleClicked" />
+                                <Button Text="Delete" BackgroundColor="Red" TextColor="White"
+                                        WidthRequest="110" Clicked="OnDeleteUserClicked" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

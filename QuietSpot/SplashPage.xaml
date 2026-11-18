@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.SplashPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="15">
+
+        <Image Source="quietspot_logo.png" WidthRequest="110" HeightRequest="110" HorizontalOptions="Center" />
+
+        <Label Text="QuietSpot" FontSize="36" FontAttributes="Bold" HorizontalOptions="Center" />
+        <Label Text="Find your perfect study spot" FontSize="16" TextColor="Gray" HorizontalOptions="Center" />
+        <ActivityIndicator IsRunning="True" Color="#009B6B" />
+        <Label Text="Loading QuietSpot..." HorizontalOptions="Center" TextColor="Gray" />
+
+    </VerticalStackLayout>
+</ContentPage>

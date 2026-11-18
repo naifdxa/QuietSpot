@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.ApprovalsPage"
+             Title="Approvals">
+
+    <Grid Padding="15" RowSpacing="8" RowDefinitions="Auto,Auto,*">
+
+        <Label Grid.Row="0" Text="Spots waiting for approval" FontSize="26" FontAttributes="Bold" TextColor="#009B6B" />
+        <Label Grid.Row="1" x:Name="notAdminLabel" Text="This page is only for the admin." TextColor="Gray" IsVisible="False" />
+
+        <CollectionView Grid.Row="2" x:Name="pendingList">
+            <CollectionView.EmptyView>
+                <Label Text="No spots are waiting for approval." TextColor="Gray" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="12" Margin="0,5" Stroke="#F4B400" StrokeThickness="1" StrokeShape="RoundRectangle 10">
+                        <Grid ColumnDefinitions="170,*" ColumnSpacing="12">
+                            <Image Grid.Column="0" Source="{Binding ImageName}" WidthRequest="170" HeightRequest="96"
+                                   Aspect="AspectFill" VerticalOptions="Start" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding Location}" />
+                                <Label Text="{Binding OpeningHours, StringFormat='Hours: {0}'}" />
+                                <Label Text="{Binding NoiseLevel, StringFormat='Noise: {0}'}" />
+                                <Label Text="{Binding Availability, StringFormat='Availability: {0}'}" />
+                                <Label Text="{Binding Description}" />
+                                <Label Text="{Binding CreatedBy, StringFormat='Submitted by: {0}'}" TextColor="Gray" />
+                                <HorizontalStackLayout Spacing="10">
+                                    <Button Text="Approve" BackgroundColor="#009B6B" TextColor="White" WidthRequest="130" Clicked="OnApproveClicked" />
+                                    <Button Text="Reject" BackgroundColor="Red" TextColor="White" WidthRequest="130" Clicked="OnRejectClicked" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

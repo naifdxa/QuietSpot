@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.SpotsPage"
+             Title="Study Spots">
+
+    <Grid Padding="15" RowSpacing="8" RowDefinitions="Auto,Auto,Auto,Auto,*">
+
+        <SearchBar Grid.Row="0" x:Name="searchBar" Placeholder="Search by name or location..."
+                   TextChanged="OnSearchChanged" />
+
+        <Picker Grid.Row="1" x:Name="noisePicker" Title="Filter by noise level"
+                SelectedIndexChanged="OnFilterChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>All</x:String>
+                    <x:String>Quiet</x:String>
+                    <x:String>Moderate</x:String>
+                    <x:String>Noisy</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Picker Grid.Row="2" x:Name="availabilityPicker" Title="Filter by availability"
+                SelectedIndexChanged="OnFilterChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>All</x:String>
+                    <x:String>Available</x:String>
+                    <x:String>Busy</x:String>
+                    <x:String>Full</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Button Grid.Row="3" Text="Clear Filters" BackgroundColor="#009B6B" TextColor="White"
+                Clicked="OnClearClicked" />
+
+        <CollectionView Grid.Row="4" x:Name="spotsList">
+            <CollectionView.EmptyView>
+                <Label Text="No study spots found." TextColor="Gray" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="12" Margin="0,5" Stroke="#009B6B" StrokeThickness="1" StrokeShape="RoundRectangle 10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCardTapped" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="170,*" ColumnSpacing="12">
+                            <Image Grid.Column="0" Source="{Binding ImageName}" WidthRequest="170" HeightRequest="96"
+                                   Aspect="AspectFill" VerticalOptions="Start" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding RatingText}" TextColor="#F4B400" />
+                                <Label Text="{Binding Location}" />
+                                <Label Text="{Binding OpeningHours, StringFormat='Hours: {0}'}" />
+                                <Label Text="{Binding NoiseLevel, StringFormat='Noise: {0}'}" />
+                                <Label Text="{Binding Availability, StringFormat='Availability: {0}'}" />
+                                <Label Text="{Binding LastUpdated, StringFormat='Status updated: {0}'}" TextColor="Gray" FontSize="12" />
+                                <Button Text="View Details" BackgroundColor="#009B6B" TextColor="White"
+                                        HorizontalOptions="Start" WidthRequest="160" Clicked="OnViewDetailsClicked" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

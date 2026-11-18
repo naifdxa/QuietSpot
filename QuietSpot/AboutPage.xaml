@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.AboutPage"
+             Title="About">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Image Source="quietspot_logo.png" WidthRequest="90" HeightRequest="90" HorizontalOptions="Center" />
+
+            <Label Text="QuietSpot" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <Label Text="Application Description" FontSize="18" FontAttributes="Bold" TextColor="#009B6B" />
+            <Label Text="QuietSpot is a mobile application that helps university students find suitable places to study based on noise level and availability. Users can view study spots, add new places, rate them, and save their favourites." />
+
+            <Label Text="Purpose" FontSize="18" FontAttributes="Bold" TextColor="#009B6B" />
+            <Label Text="To support the Smart Community and Digital Innovation theme by helping students make better decisions about where to study." />
+
+            <Label Text="Developer" FontSize="18" FontAttributes="Bold" TextColor="#009B6B" />
+            <Label Text="Alhaddar Naif Abdullah Abobakr (SW01084969)" />
+
+            <Label Text="Version" FontSize="18" FontAttributes="Bold" TextColor="#009B6B" />
+            <Label Text="1.0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

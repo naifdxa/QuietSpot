@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.SpotDetailsPage"
+             Title="Spot Details">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="10">
+
+            <Image Source="{Binding ImageName}" WidthRequest="356" HeightRequest="200"
+                   Aspect="AspectFill" HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="OnImageDoubleTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Tip: double tap the picture to save or remove this spot" TextColor="Gray" FontSize="12" />
+
+            <Label Text="{Binding Name}" FontSize="26" FontAttributes="Bold" TextColor="#009B6B" />
+
+            <Label Text="{Binding Location, StringFormat='Location: {0} (tap to open in Google Maps)'}"
+                   TextColor="#0A64C8" TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLocationTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label Text="{Binding OpeningHours, StringFormat='Opening hours: {0}'}" />
+            <Label Text="{Binding NoiseLevel, StringFormat='Noise level now: {0}'}" />
+            <Label Text="{Binding Availability, StringFormat='Availability now: {0}'}" />
+            <Label Text="{Binding LastUpdated, StringFormat='Status updated: {0}'}" TextColor="Gray" FontSize="12" />
+            <Label Text="{Binding Description}" />
+
+            <Button Text="{Binding SaveButtonText}" BackgroundColor="#009B6B" TextColor="White" Clicked="OnSaveClicked" />
+            <Button Text="Share this Spot" BackgroundColor="#009B6B" TextColor="White" Clicked="OnShareClicked" />
+            <Button x:Name="changePhotoButton" Text="Change Photo" BackgroundColor="#009B6B" TextColor="White" Clicked="OnChangePhotoClicked" />
+
+            <Label Text="Ratings &amp; Reviews" FontSize="22" FontAttributes="Bold" Margin="0,15,0,0" />
+
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="{Binding AverageText}" FontSize="44" FontAttributes="Bold" VerticalOptions="Center" />
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label Text="{Binding StarsText}" TextColor="#F4B400" FontSize="22" />
+                    <Label Text="{Binding ReviewsCountText}" TextColor="Gray" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <Label Text="Customer Reviews" FontSize="18" FontAttributes="Bold" Margin="0,10,0,0" />
+            <Label x:Name="noReviewsLabel" Text="No reviews yet. Be the first to review this spot." TextColor="Gray" />
+
+            <VerticalStackLayout x:Name="reviewsLayout" Spacing="8">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Spacing="2">
+                            <HorizontalStackLayout Spacing="8">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" />
+                                <Label Text="{Binding TimeAgo}" TextColor="Gray" />
+                            </HorizontalStackLayout>
+                            <Label Text="{Binding Stars}" TextColor="#F4B400" FontSize="18" />
+                            <Label Text="{Binding Comment}" />
+                            <BoxView HeightRequest="1" Color="#DDDDDD" Margin="0,8,0,0" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <Label Text="Write a review" FontSize="20" FontAttributes="Bold" Margin="0,15,0,0" />
+            <Label x:Name="reviewerLabel" TextColor="Gray" />
+
+            <HorizontalStackLayout Spacing="4">
+                <Button x:Name="star1" ClassId="1" Text="&#9734;" FontSize="28" BackgroundColor="Transparent" TextColor="#F4B400" Clicked="OnStarClicked" />
+                <Button x:Name="star2" ClassId="2" Text="&#9734;" FontSize="28" BackgroundColor="Transparent" TextColor="#F4B400" Clicked="OnStarClicked" />
+                <Button x:Name="star3" ClassId="3" Text="&#9734;" FontSize="28" BackgroundColor="Transparent" TextColor="#F4B400" Clicked="OnStarClicked" />
+                <Button x:Name="star4" ClassId="4" Text="&#9734;" FontSize="28" BackgroundColor="Transparent" TextColor="#F4B400" Clicked="OnStarClicked" />
+                <Button x:Name="star5" ClassId="5" Text="&#9734;" FontSize="28" BackgroundColor="Transparent" TextColor="#F4B400" Clicked="OnStarClicked" />
+            </HorizontalStackLayout>
+
+            <Editor x:Name="commentEditor" Placeholder="Write your comment here..." HeightRequest="100" />
+
+            <Button Text="Submit Review" BackgroundColor="#009B6B" TextColor="White" Clicked="OnReviewClicked" />
+
+            <Label Text="Update current status" FontSize="20" FontAttributes="Bold" Margin="0,15,0,0" />
+            <Label Text="Is the noise or the seats different now? Update it so other students know." TextColor="Gray" />
+
+            <Picker x:Name="statusNoisePicker" Title="Noise level now">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Quiet</x:String>
+                        <x:String>Moderate</x:String>
+                        <x:String>Noisy</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Picker x:Name="statusAvailabilityPicker" Title="Availability now">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Available</x:String>
+                        <x:String>Busy</x:String>
+                        <x:String>Full</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Update Status" BackgroundColor="#009B6B" TextColor="White" Clicked="OnUpdateStatusClicked" />
+
+            <Button x:Name="deleteButton" Text="Delete this Spot (admin)" BackgroundColor="Red" TextColor="White"
+                    Margin="0,15,0,0" Clicked="OnDeleteClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

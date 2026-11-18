@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.HomePage"
+             Title="Home">
+
+    <Grid Padding="15" RowSpacing="10" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <VerticalStackLayout Grid.Column="0">
+                <Label Text="QuietSpot" FontSize="30" FontAttributes="Bold" TextColor="#009B6B" />
+                <Label Text="Find and save quiet study places" TextColor="Gray" />
+            </VerticalStackLayout>
+            <Button Grid.Column="1" Text="Logout" BackgroundColor="Transparent" TextColor="Red"
+                    BorderColor="Red" BorderWidth="2" VerticalOptions="Center" Clicked="OnLogoutClicked" />
+        </Grid>
+
+        <Label Grid.Row="1" x:Name="welcomeLabel" Text="Welcome" FontSize="18" FontAttributes="Bold" />
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="10">
+            <Border Grid.Column="0" Padding="12" BackgroundColor="#E6F5EF" StrokeThickness="0" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout>
+                    <Label x:Name="totalLabel" Text="0" FontSize="26" FontAttributes="Bold" />
+                    <Label Text="Study Spots" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Grid.Column="1" Padding="12" BackgroundColor="#E6F5EF" StrokeThickness="0" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout>
+                    <Label x:Name="savedLabel" Text="0" FontSize="26" FontAttributes="Bold" />
+                    <Label Text="My Saved Spots" />
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="10">
+            <Button Grid.Column="0" Text="Find a Study Spot" BackgroundColor="#009B6B" TextColor="White"
+                    Clicked="OnFindClicked" />
+            <Button Grid.Column="1" Text="Add a Study Spot" BackgroundColor="#009B6B" TextColor="White"
+                    Clicked="OnAddClicked" />
+        </Grid>
+
+        <Label Grid.Row="4" x:Name="lastViewedLabel" Text="Last viewed: none yet" TextColor="Gray" />
+
+        <Label Grid.Row="5" Text="Recommended Spots (Quiet and Available)" FontSize="18" FontAttributes="Bold" />
+
+        <CollectionView Grid.Row="6" x:Name="recommendedList">
+            <CollectionView.EmptyView>
+                <Label Text="No quiet and available spots right now." TextColor="Gray" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="12" Margin="0,5" Stroke="#009B6B" StrokeThickness="1" StrokeShape="RoundRectangle 10">
+                        <Grid ColumnDefinitions="170,*" ColumnSpacing="12">
+                            <Image Grid.Column="0" Source="{Binding ImageName}" WidthRequest="170" HeightRequest="96"
+                                   Aspect="AspectFill" VerticalOptions="Start" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding RatingText}" TextColor="#F4B400" />
+                                <Label Text="{Binding Location}" />
+                                <Label Text="{Binding OpeningHours, StringFormat='Hours: {0}'}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

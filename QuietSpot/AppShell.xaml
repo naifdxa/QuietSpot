@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="QuietSpot.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:QuietSpot"
+    Shell.FlyoutBehavior="Disabled"
+    Title="QuietSpot">
+
+    <!-- 1) Splash screen, 2) Login page -->
+    <ShellContent Route="SplashPage" ContentTemplate="{DataTemplate local:SplashPage}" />
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+
+    <!-- 3) Main tabs (after login). The Approvals tab is only for the admin -->
+    <TabBar>
+        <ShellContent Title="Home" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
+        <ShellContent Title="Spots" Route="SpotsPage" ContentTemplate="{DataTemplate local:SpotsPage}" />
+        <ShellContent Title="Add" Route="AddSpotPage" ContentTemplate="{DataTemplate local:AddSpotPage}" />
+        <ShellContent Title="Saved" Route="SavedPage" ContentTemplate="{DataTemplate local:SavedPage}" />
+        <ShellContent x:Name="approvalsTab" Title="Approvals" Route="ApprovalsPage" IsVisible="False"
+                      ContentTemplate="{DataTemplate local:ApprovalsPage}" />
+        <ShellContent x:Name="usersTab" Title="Users" Route="UsersPage" IsVisible="False"
+                      ContentTemplate="{DataTemplate local:UsersPage}" />
+        <ShellContent Title="About" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    </TabBar>
+
+</Shell>
+

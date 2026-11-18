@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuietSpot.AddSpotPage"
+             Title="Add Study Spot">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="10">
+
+            <Label Text="Add a Study Spot" FontSize="26" FontAttributes="Bold" TextColor="#009B6B" />
+            <Label x:Name="infoLabel" TextColor="Gray" />
+
+            <Entry x:Name="nameEntry" Placeholder="Study spot name (example: Library - Level 6)" />
+            <Entry x:Name="locationEntry" Placeholder="Location (example: UNITEN Library, Level 6)" />
+            <Entry x:Name="mapEntry" Placeholder="Google Maps link (optional)" />
+            <Entry x:Name="hoursEntry" Placeholder="Opening hours (example: 9 AM - 9 PM, Mon - Fri)" />
+
+            <Picker x:Name="noisePicker" Title="Noise level">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Quiet</x:String>
+                        <x:String>Moderate</x:String>
+                        <x:String>Noisy</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Picker x:Name="availabilityPicker" Title="Availability">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Available</x:String>
+                        <x:String>Busy</x:String>
+                        <x:String>Full</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Editor x:Name="descriptionEditor" Placeholder="Description (optional)" HeightRequest="100" />
+
+            <Button Text="Choose Photo (optional)" BackgroundColor="#009B6B" TextColor="White" Clicked="OnChoosePhotoClicked" />
+            <Image x:Name="photoPreview" WidthRequest="267" HeightRequest="150" Aspect="AspectFill"
+                   HorizontalOptions="Start" IsVisible="False" />
+
+            <Button Text="Save Study Spot" BackgroundColor="#009B6B" TextColor="White" Clicked="OnSaveClicked" />
+
+            <Label Text="My submissions" FontSize="20" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Label x:Name="noSubmissionsLabel" Text="You have not added any spots yet." TextColor="Gray" />
+
+            <VerticalStackLayout x:Name="submissionsLayout" Spacing="6">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding SubmissionText}" />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

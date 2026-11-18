@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<svg width="480" height="270" viewBox="0 0 480 270" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="480" height="270" fill="#FFF3E0" />
+    <rect x="0" y="200" width="480" height="70" fill="#E8CFA8" />
+    <rect x="30" y="25" width="130" height="95" rx="6" fill="#BFE3F5" stroke="#FFFFFF" stroke-width="6" />
+    <line x1="95" y1="25" x2="95" y2="120" stroke="#FFFFFF" stroke-width="5" />
+    <line x1="30" y1="72" x2="160" y2="72" stroke="#FFFFFF" stroke-width="5" />
+    <rect x="432" y="165" width="28" height="36" rx="4" fill="#C2703D" />
+    <ellipse cx="446" cy="150" rx="22" ry="20" fill="#4C9A6A" />
+    <ellipse cx="434" cy="138" rx="12" ry="14" fill="#5BB37D" />
+    <ellipse cx="150" cy="195" rx="85" ry="16" fill="#D9A441" />
+    <rect x="144" y="195" width="12" height="25" fill="#A9792B" />
+    <ellipse cx="350" cy="195" rx="85" ry="16" fill="#D9A441" />
+    <rect x="344" y="195" width="12" height="25" fill="#A9792B" />
+    <circle cx="105" cy="150" r="14" fill="#8D6E63" />
+    <rect x="91" y="164" width="28" height="26" rx="10" fill="#E57373" />
+    <circle cx="195" cy="150" r="14" fill="#6D4C41" />
+    <rect x="181" y="164" width="28" height="26" rx="10" fill="#5B8DEF" />
+    <circle cx="305" cy="150" r="14" fill="#6D4C41" />
+    <rect x="291" y="164" width="28" height="26" rx="10" fill="#9575CD" />
+    <circle cx="395" cy="150" r="14" fill="#8D6E63" />
+    <rect x="381" y="164" width="28" height="26" rx="10" fill="#4C9A6A" />
+    <rect x="115" y="92" width="70" height="30" rx="12" fill="#FFFFFF" stroke="#D9A441" stroke-width="3" />
+    <circle cx="135" cy="107" r="4" fill="#D9A441" />
+    <circle cx="150" cy="107" r="4" fill="#D9A441" />
+    <circle cx="165" cy="107" r="4" fill="#D9A441" />
+    <rect x="315" y="92" width="70" height="30" rx="12" fill="#FFFFFF" stroke="#D9A441" stroke-width="3" />
+    <circle cx="335" cy="107" r="4" fill="#D9A441" />
+    <circle cx="350" cy="107" r="4" fill="#D9A441" />
+    <circle cx="365" cy="107" r="4" fill="#D9A441" />
+</svg>
